@@ -13,7 +13,7 @@ async fn main() {
 
     let app = Router::new()
         .route("/", get(index))
-        .route("/ws", get(websocket::websocket_handler))
+        .route("/ws/", get(websocket::websocket_handler))
         .layer(cors);
 
     axum::Server::bind(&"0.0.0.0:8080".parse().unwrap())
