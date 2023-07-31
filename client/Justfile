@@ -1,0 +1,11 @@
+set shell := ["bash", "-uc"]
+set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
+
+alias f := fmt
+alias format := fmt
+
+fmt:
+    stylua .
+
+lint:
+    selene
