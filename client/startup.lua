@@ -1,3 +1,6 @@
+local config = require("config")
+local run_quarry = require("quarry")
+
 local current_dir = fs.getDir(shell.getRunningProgram())
 local plugins_path = fs.combine(current_dir, "plugins")
 
@@ -28,3 +31,11 @@ if fs.exists(plugins_path) then
         register_plugin(lua_extension_removed)
     end
 end
+
+local quarry_stuff = {
+    config = config,
+    plugins = loaded_plugins
+}
+
+-- Actually run the quarry code
+run_quarry(quarry_stuff)
