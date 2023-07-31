@@ -6,6 +6,7 @@ use axum::{
     response::IntoResponse,
 };
 use futures::stream::StreamExt;
+use tracing::info;
 
 use crate::json::{CCPacket, Position};
 
@@ -22,7 +23,7 @@ pub async fn websocket(stream: WebSocket) {
             if let Ok(packet) = serde_json::from_str::<CCPacket>(&message) {
                 match packet {
                     CCPacket::ClientConnect { name, id } => {
-                        println!("Client connected! {name} {id}");
+                        info!("Client connected! {name} {id}");
                     }
                     CCPacket::LevelDecrease {
                         old_level,
