@@ -9,7 +9,7 @@ local function register_plugin(plugin_path)
     -- TODO: A custom plugin ENV
     local plugin = require(plugin_path)
     print(("[+] Registering plugin: %s"):format(plugin.name))
-    plugin_env[plugin.name] = plugin.run
+    loaded_plugins[plugin.name] = plugin.run
 
     local status, err = pcall(plugin.on_register)
     if not status and err then
