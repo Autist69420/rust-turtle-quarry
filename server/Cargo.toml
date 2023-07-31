@@ -7,14 +7,16 @@ edition = "2021"
 
 [dependencies]
 # HTTP Related stuff
-axum = { version = "0.6.18", features = ["ws"] }
+axum = { version = "0.6.19", features = ["ws"] }
 tower = { version = "0.4", features = ["util"] }
-tower-http = {version = "0.4.0", features = ["cors", "trace"]}
+tower-http = {version = "0.4.3", features = ["cors", "trace"]}
 
 # ASYNC Related stuff
 tokio = { version = "1", features = ["full"] }
 futures = "0.3"
 serde = { version = "1.0.180", features = ["derive"] }
 serde_json = "1.0.104"
+
+# Logging related stuff
 tracing-subscriber = { version = "0.3.17", features = ["env-filter"] }
 tracing = "0.1.37"
