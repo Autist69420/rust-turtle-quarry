@@ -8,4 +8,4 @@ fmt:
     stylua .
 
 lint:
-    selene
+    selene .
