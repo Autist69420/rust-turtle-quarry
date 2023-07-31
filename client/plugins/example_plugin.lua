@@ -8,5 +8,5 @@ return {
 
     on_register = function()
         print("Hey me me got registered!")
-    end
+    end,
 }

@@ -1,6 +1,6 @@
 local packets = require("quarry.packets")
 
-return function (quarry_config)
+return function(quarry_config)
     local ok, msg = http.checkURL(quarry_config.config.url)
     if not ok then
         return printError(("Could not contact URL: %s"):format(msg))

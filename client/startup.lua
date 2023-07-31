@@ -34,7 +34,7 @@ end
 
 local quarry_stuff = {
     config = config,
-    plugins = loaded_plugins
+    plugins = loaded_plugins,
 }
 
 -- Actually run the quarry code
