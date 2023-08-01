@@ -24,8 +24,8 @@ pub async fn websocket(stream: WebSocket, _state: Arc<Mutex<AppState>>) {
         if let Message::Text(message) = message {
             if let Ok(packet) = serde_json::from_str::<CCPacket>(&message) {
                 match packet {
-                    CCPacket::ClientConnect { name, id } => {
-                        info!("Client connected: name={name}; id={id}");
+                    CCPacket::ClientConnect { name, id, gps } => {
+                        info!("Client connected: name={name}; id={id}; gps={gps}");
                     }
                     CCPacket::LevelDecrease {
                         old_level,
@@ -37,6 +37,7 @@ pub async fn websocket(stream: WebSocket, _state: Arc<Mutex<AppState>>) {
                         new_level,
                         position,
                     } => {}
+                    CCPacket::UpdatePosition { new_position, old_position } => todo!(),
                 }
             }
         }
