@@ -4,9 +4,7 @@ local function handle_websocket_messages(ws)
     while true do
         local events = { os.pullEvent() }
         if events[1] == "websocket_message" then
-
         elseif events[1] == "websocket_close" then
-
         end
     end
 end

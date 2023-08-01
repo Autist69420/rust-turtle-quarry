@@ -8,7 +8,7 @@ return {
                 data = {
                     name = os.getComputerLabel() or "Name not set",
                     id = os.getComputerID(),
-                    gps = {x, y, z}
+                    gps = { x, y, z },
                 },
             }
         end,
