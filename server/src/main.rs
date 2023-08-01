@@ -1,7 +1,7 @@
 use std::sync::{Arc, Mutex};
 
-use axum::Extension;
 use axum::http::Method;
+use axum::Extension;
 use axum::{response::Html, routing::get, Router};
 use tower_http::cors::Any;
 use tower_http::cors::CorsLayer;

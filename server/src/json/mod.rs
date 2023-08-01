@@ -16,7 +16,11 @@ impl Display for Position {
 #[serde(tag = "type", content = "data")]
 pub enum CCPacket {
     /// Sent when a client connects.
-    ClientConnect { name: String, id: u64, gps: Position },
+    ClientConnect {
+        name: String,
+        id: u64,
+        gps: Position,
+    },
     /// Sent when a turtle moves down
     ///
     /// # Paramaters
@@ -54,8 +58,5 @@ pub enum CCPacket {
 #[derive(Serialize, Debug)]
 #[serde(tag = "type", content = "data")]
 pub enum ServerPacket {
-    Acknowledge {
-        message: String,
-        ok: bool,
-    },
+    Acknowledge { message: String, ok: bool },
 }

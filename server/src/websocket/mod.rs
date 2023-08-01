@@ -5,14 +5,21 @@ use axum::{
         ws::{Message, WebSocket},
         WebSocketUpgrade,
     },
-    response::IntoResponse, Extension,
+    response::IntoResponse,
+    Extension,
 };
 use futures::{stream::StreamExt, SinkExt};
 use tracing::info;
 
-use crate::{json::{CCPacket, Position, ServerPacket}, AppState};
+use crate::{
+    json::{CCPacket, Position, ServerPacket},
+    AppState,
+};
 
-pub async fn websocket_handler(ws: WebSocketUpgrade, Extension(state): Extension<Arc<Mutex<AppState>>>) -> impl IntoResponse {
+pub async fn websocket_handler(
+    ws: WebSocketUpgrade,
+    Extension(state): Extension<Arc<Mutex<AppState>>>,
+) -> impl IntoResponse {
     ws.on_upgrade(|socket| websocket(socket, state))
 }
 
@@ -37,7 +44,10 @@ pub async fn websocket(stream: WebSocket, _state: Arc<Mutex<AppState>>) {
                         new_level,
                         position,
                     } => {}
-                    CCPacket::UpdatePosition { new_position, old_position } => todo!(),
+                    CCPacket::UpdatePosition {
+                        new_position,
+                        old_position,
+                    } => todo!(),
                 }
             }
         }
