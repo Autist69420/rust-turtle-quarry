@@ -1,10 +1,13 @@
+use std::sync::{Arc, Mutex};
+
+use axum::Extension;
 use axum::http::Method;
 use axum::{response::Html, routing::get, Router};
 use tower_http::cors::Any;
 use tower_http::cors::CorsLayer;
 use tower_http::trace::TraceLayer;
 
-use server::websocket;
+use server::{websocket, AppState};
 
 #[tokio::main]
 async fn main() {
@@ -17,10 +20,13 @@ async fn main() {
         .allow_methods([Method::GET, Method::POST])
         .allow_origin(Any);
 
+    let state = Arc::new(Mutex::new(AppState::new()));
+
     let app = Router::new()
         .route("/", get(index))
         .route("/ws/", get(websocket::websocket_handler))
         .layer(TraceLayer::new_for_http())
+        .layer(Extension(state))
         .layer(cors);
 
     axum::Server::bind(&"0.0.0.0:8080".parse().unwrap())
